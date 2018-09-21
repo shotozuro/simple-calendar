@@ -51,6 +51,11 @@ function showCalendar () {
   const dateBefore = new Date(year, month, 0).getDate()
   
   let daysBefore = []
+  // if (firstDate == 0) {
+  //   prevDay = 6
+  // } else {
+  //   lastDate - 1
+  // }
   for (var i = dateBefore - firstDate + 2; i <= dateBefore; i++) {
     daysBefore.push({month: month - 1 < 0 ? 12 : month - 1, text: i})
   }
@@ -66,7 +71,6 @@ function showCalendar () {
 
   const newArr1 = daysBefore.concat(arrDays)
   const newArr = newArr1.concat(daysAfter)
-  // console.log({newArr})
   data = newArr.map((val, idx) => {
     return filterDateByDay(newArr, idx, year, month)
   })
@@ -89,7 +93,7 @@ function renderDays () {
   let html = ""
   for (var i = 0; i < days.length; i++) {
     const index = i + 1 == 7 ? 0 : i + 1
-    html += `<div>${days[index]}<div class="col" id="day-${index}"></div></div>`
+    html += `<div style="text-align:center">${days[index]}<div class="col" id="day-${index}"></div></div>`
   }
 
   cal.innerHTML = html
@@ -98,13 +102,13 @@ function renderDays () {
 
 function renderRow () {
   let html = ""
-  console.log(data)
   days.map((val1, idx1) => {
     const index = idx1
     const dayEl = document.getElementById("day-" + index)
     data[index].map((val, idx) => {
       const block = document.createElement("DIV")
       const text = document.createTextNode(val.text)
+      block.classList.add("tgl")
       block.appendChild(text)
       dayEl.appendChild(block)
     })
