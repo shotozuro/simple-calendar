@@ -1,0 +1,8 @@
+#calendar {
+  display: flex;
+  flex-direction: row;
+  padding: 2px;
+}
+.col {
+  padding: 2px;
+}
