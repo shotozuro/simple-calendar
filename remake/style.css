@@ -1,0 +1,10 @@
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.block {
+  width: 50px;
+  height: 50px;
+  margin: 1px
+}
